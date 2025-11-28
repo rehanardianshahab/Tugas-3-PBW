@@ -1,0 +1,222 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fb;
+}
+
+header {
+    background-color: #2563eb;
+    color: white;
+    padding: 20px 0;
+}
+
+main {
+    margin-top: 50px;
+    padding: 0px 36px;
+}
+
+.text-muted {
+  color: rgb(172, 171, 171)
+}
+
+.text-danger {
+  color: #e64615
+}
+
+.status-success {
+  color: rgb(3, 153, 3);
+  background-color: rgb(202, 243, 205);
+}
+
+.status-danger {
+  color: red;
+  background-color: rgb(236, 202, 202);
+}
+
+a.menu {
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 25px;
+    text-decoration: none;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+a.menu:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.05);
+}
+
+footer {
+    margin-top: 50px;
+    color: #555;
+    font-size: 14px;
+}
+
+#inputStok {
+  width: 240px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="search"],
+select {
+  padding: 10px 12px;
+  margin: 5px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  outline: none;
+}
+
+/* ====== Tombol ====== */
+button {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-danger {
+  background-color: #e64615;
+}
+.btn-danger:hover {
+  background-color: #ad2f09;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.container {
+  padding: 0 calc((70vw - 500px) / 2);;
+}
+
+/* ====== Tabel ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+th {
+  background-color: rgb(62, 129, 230);
+  color: white;
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* ====== Pesan dan Status ====== */
+p {
+  font-size: 14px;
+}
+
+p[style*="color:red"] {
+  background-color: #fee2e2;
+  border-left: 4px solid #ef4444;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+p[style*="color:green"] {
+  background-color: #dcfce7;
+  border-left: 4px solid #22c55e;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* ====== Responsif ====== */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  td {
+    text-align: left;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 6px 0;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #334155;
+  }
+}
+
+
+/* ====== Tabs ====== */
+.tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.tab {
+  cursor: pointer;
+  font-size: 18px;
+  padding-bottom: 6px;
+}
+.tab-active {
+  border-bottom: 3px solid #3498db;
+  color: #3498db;
+  font-weight: bold;
+}

@@ -1,0 +1,76 @@
+<div>
+    <div>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        <input type="text" v-model="query" placeholder="Cari nama barang..." />
+        <div @click="resetFilter" v-if="query.length > 0" style="padding: 14px 0px; cursor: pointer;">❌</div>
+      </div>
+
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        <select v-model="newItem.name">
+          <option v-for="list, key in stokList" :key="key" :value="list.judul">{{ list.judul }}</option>
+        </select>
+        <input type="number" v-model.number="newItem.qty" placeholder="Qty" min="0" style="width:80px"/>
+        <button @click="addItem">Tambah</button>
+      </div>
+    </div>
+  
+    <table v-if="filteredItems.length > 0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nama Barang</th>
+          <th>Qty</th>
+          <th>Harga</th>
+          <th>Total</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(it, idx) in filteredItems" :key="it.id">
+          <td>{{ idx + 1 }}</td>
+  
+          <td v-if="editIndex !== it.id">
+            <p style="display:flex;gap:6px;">{{ it.name }}</p>
+          </td>
+          <td v-else>
+            <select v-model="editBuffer.name">
+              <option v-for="list, key in stokList" :key="key" :value="list.judul">{{ list.judul }}</option>
+            </select>
+          </td>
+  
+          <td v-if="editIndex !== it.id">
+            <p style="display:flex;gap:6px;">{{ it.qty }}</p>
+          </td>
+          <td v-else>
+            <input type="number" v-model.number="editBuffer.qty" />
+          </td>
+  
+          <td>
+            <p style="display:flex;gap:6px;">{{ formatCurrency(it.price) }}</p>
+          </td>
+  
+          <td>
+            <p style="display:flex;gap:6px;">{{ formatCurrency(it.qty * it.price) }}</p>
+          </td>
+  
+          <td>
+            <div v-if="editIndex !== it.id" style="display:flex;gap:6px;">
+              <button class="" @click="startEdit(it)">Edit</button>
+              <button class="btn small btn-danger" @click="removeItem(it)">Hapus</button>
+            </div>
+  
+            <div v-else style="display:flex;gap:6px;">
+              <button @click="saveEdit(it)">Simpan</button>
+              <button class="btn-danger" @click="cancelEdit">Batal</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div v-else style="height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <img src="/img/empty-data.png" width="250px" height="250px" />
+      <p class="text-muted">Tidak ada data.</p>
+    </div>
+</div>
+  

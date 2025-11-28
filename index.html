@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ekspedisi - Tracking Sistem</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Tugas Praktik 3 - Vue.js</h1>
+    <h3>Universitas Terbuka</h3>
+  </header>
+  <main>
+    <div id="app">
+      <div class="tabs">
+        <div class="tab" 
+             :class="{ 'tab-active': activeTab === 'tracking' }"
+             @click="activeTab = 'tracking'">
+          Tracking
+        </div>
+
+        <div class="tab" 
+             :class="{ 'tab-active': activeTab === 'order' }"
+             @click="activeTab = 'order'">
+          Order
+        </div>
+
+        <div class="tab" 
+             :class="{ 'tab-active': activeTab === 'stok' }"
+             @click="activeTab = 'stok'">
+          Stok
+        </div>
+      </div>
+
+      <div v-if="activeTab === 'tracking'">
+        <tracking-component :initial-resi="defaultResi"></tracking-component>
+      </div>
+
+      <div v-if="activeTab === 'order'">
+        <order-component></order-component>
+      </div>
+
+      <div v-if="activeTab === 'stok'">
+        <stok-component></stok-component>
+      </div>
+
+    </div>
+  </main>
+  <footer>
+    <p>© 2025 Rehan Ardian — Vue.js Praktik UT</p>
+  </footer>
+  <script src="./js/components/status-badge.js"></script>
+  <script src="./js/components/tracking-app.js"></script>
+  <script src="./js/components/order-app.js"></script>
+  <script src="./js/components/stok-app.js"></script>
+
+  <script src="./js/services/api.js"></script>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>

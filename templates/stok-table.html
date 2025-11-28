@@ -1,0 +1,64 @@
+<div>
+  <input id="inputStok" type="text" v-model="keyword" placeholder="Cari berdasarkan kode atau judul..." />
+
+  <select v-model="filterKategori">
+    <option value="">Semua Kategori</option>
+    <option v-for="kategori in kategoriList" :key="kategori">{{ kategori }}</option>
+  </select>
+
+  <select v-model="filterUpbjj">
+    <option value="">Semua UPBJJ</option>
+    <option v-for="u in upbjjList" :key="u">{{ u }}</option>
+  </select>
+  <p v-if="keyword || filterKategori || filterUpbjj">
+    Menampilkan hasil untuk:
+    <b>{{ keyword || '-' }}</b> |
+    Kategori: <b>{{ filterKategori || 'Semua' }}</b> |
+    UPBJJ: <b>{{ filterUpbjj || 'Semua' }}</b>
+  </p>
+
+  <div class="container">
+    <table border="1" cellpadding="8" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Kode</th>
+          <th>Judul</th>
+          <th>Kategori</th>
+          <th>UPBJJ</th>
+          <th>Lokasi Rak</th>
+          <th>Harga (Rp)</th>
+          <th>Qty</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-if="filteredStok.length === 0">
+          <td colspan="8" style="text-align:center;">Tidak ada data ditemukan</td>
+        </tr>
+
+        <tr
+          v-for="(item, index) in filteredStok"
+          :key="index"
+          :style="{ backgroundColor: item.qty < item.safety ? 'rgba(100, 150, 250, 0.1)' : 'white' }"
+        >
+          <td>{{ item.kode }}</td>
+          <td>{{ item.judul }}</td>
+          <td>{{ item.kategori }}</td>
+          <td>{{ item.upbjj }}</td>
+          <td>{{ item.lokasiRak }}</td>
+          <td>{{ item.harga.toLocaleString('id-ID') }}</td>
+          <td>
+            <status-badge :jumlah="item.qty"></status-badge>
+          </td>
+          <td v-html="item.catatanHTML"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Total Jenis Bahan Ajar: <b>{{ totalJenis }}</b> <br />
+    Total Stok Keseluruhan: <b>{{ totalQty }}</b>
+  </p>
+
+</div>

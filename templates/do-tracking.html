@@ -1,0 +1,59 @@
+<div>
+    <h3>Tracking Pengiriman</h3>
+    <p class="text-danger" v-if="errorMsg" v-html="errorMsg"></p>
+    <input v-model="resi" type="text" placeholder="Nomor resi...">
+  
+    <button @click="search">Cari</button>
+  
+    <div v-if="result" class="container">
+        <p style="color:green;">✅ Nomor DO ditemukan.</p>
+        <h3>Detail Pengiriman</h3>
+        <table border="1" cellpadding="8" cellspacing="0">
+          <tr>
+            <th>No. DO</th>
+            <td data-label="Kode">{{ result.nama }}</td>
+          </tr>
+          <tr>
+            <th>Nama Mahasiswa</th>
+            <td data-label="Nama Mahasiswa">{{ result.nama }}</td>
+          </tr>
+          <tr>
+            <th>NIM</th>
+            <td data-label="NIM">{{ result.nim }}</td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td data-label="Status">{{ result.status }}</td>
+          </tr>
+          <tr>
+            <th>Ekspedisi</th>
+            <td data-label="Ekspedisi">{{ result.ekspedisi }}</td>
+          </tr>
+          <tr>
+            <th>Tanggal Kirim</th>
+            <td data-label="Tanggal Kirim">{{ result.tanggalKirim }}</td>
+          </tr>
+          <tr>
+            <th>Total (Rp)</th>
+            <td data-label="Total">{{ result.total.toLocaleString('id-ID') }}</td>
+          </tr>
+        </table>
+
+        <h3>Riwayat Perjalanan</h3>
+        <table border="1" cellpadding="8" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Waktu</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(log, index) in result.perjalanan" :key="index">
+              <td data-label="Waktu">{{ log.waktu }}</td>
+              <td data-label="Keterangan">{{ log.keterangan }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
+  
