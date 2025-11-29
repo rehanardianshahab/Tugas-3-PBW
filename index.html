@@ -33,15 +33,15 @@
         </div>
       </div>
 
-      <div v-if="activeTab === 'tracking'">
+      <div v-show="activeTab === 'tracking'">
         <tracking-component :initial-resi="defaultResi"></tracking-component>
       </div>
 
-      <div v-if="activeTab === 'order'">
+      <div v-show="activeTab === 'order'">
         <order-component></order-component>
       </div>
 
-      <div v-if="activeTab === 'stok'">
+      <div v-show="activeTab === 'stok'">
         <stok-component></stok-component>
       </div>
 

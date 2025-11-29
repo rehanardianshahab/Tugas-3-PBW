@@ -48,7 +48,7 @@
           <td>{{ item.lokasiRak }}</td>
           <td>{{ item.harga.toLocaleString('id-ID') }}</td>
           <td>
-            <status-badge :jumlah="item.qty"></status-badge>
+            <status-badge :jumlah="item.qty" :maks="item.safety"></status-badge>
           </td>
           <td v-html="item.catatanHTML"></td>
         </tr>

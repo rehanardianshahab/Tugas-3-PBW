@@ -1,9 +1,9 @@
 Vue.component("status-badge", {
-    props: ["jumlah"],
+    props: ["jumlah","maks"],
     name: 'status-badge',
     computed: {
       statusColor() {
-        return this.jumlah > 5 ? "status-success" : "status-danger";
+        return this.jumlah > this.maks ? "status-success" : "status-danger";
       }
     },
   

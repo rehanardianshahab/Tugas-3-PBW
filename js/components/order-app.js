@@ -138,12 +138,13 @@ Vue.component("order-component", {
       }
 
       const idx = this.items.findIndex(i => i.id === item.id);
+      const findData = this.stokList.find(d => d.judul == this.editBuffer.name)
       if (idx !== -1) {
         this.items.splice(idx, 1, {
           id: item.id,
           name: String(this.editBuffer.name),
           qty: Number(this.editBuffer.qty),
-          price: Number(this.editBuffer.price)
+          price: Number(findData.harga)
         });
       }
 
